@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Facades\Sportsmonk;
 use Illuminate\Console\Command;
 
 class ImportPlayersFromSportsMonk extends Command
@@ -25,7 +26,14 @@ class ImportPlayersFromSportsMonk extends Command
      */
     public function handle()
     {
-        // Fetch players from SportsMonk API
-        // create or update players in the database
+        $this->info('Starting Import of players.');
+
+        $players = Sportsmonk::getPlayers();
+
+        foreach ($players['data'] as $player) {
+            $this->info('Importing player ' . $player['firstname']);
+        }
+
+        $this->info('Imported ' . count($players['data']) . ' players.');
     }
 }

@@ -15,9 +15,11 @@ class SportsmonkService
             $this->apiKey = config('services.sportmonks.api_key');
       }
 
-      public function getPlayers()
+
+
+      public function getPlayers($page = 1, $perPage = 30)
       {
-            $url = $this->baseUrl . '/football/players?include=nationality';
+            $url = $this->baseUrl . '/football/players?include=nationality&page=' . $page . '&per_page=' . $perPage;
 
             $response = Http::withHeaders([
                   'Authorization' => $this->apiKey
