@@ -14,15 +14,17 @@ return new class extends Migration
         Schema::create('players', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->timestamp('last_synced_at');
+            $table->timestamp('last_synced_at')->nullable();
+            $table->unsignedBigInteger('sportsmonk_id');
             $table->unsignedBigInteger('sport_id');
             $table->unsignedBigInteger('country_id');
             $table->unsignedBigInteger('nationality_id');
             $table->string('nationality_name');
             $table->unsignedBigInteger('city_id')->nullable();
-            $table->unsignedBigInteger('position_id');
+            $table->unsignedBigInteger('position_id')->nullable();
+            $table->string('position_name')->nullable();
             $table->unsignedBigInteger('detailed_position_id')->nullable();
-            $table->unsignedBigInteger('type_id');
+            $table->unsignedBigInteger('type_id')->nullable();
             $table->string('common_name');
             $table->string('firstname');
             $table->string('lastname');

@@ -27,13 +27,26 @@ class ImportPlayersFromSportsMonk extends Command
     public function handle()
     {
         $this->info('Starting Import of players.');
+        $playersCount = 0;
+        $page = 1;
+        $hasMorePages = true;
 
-        $players = Sportsmonk::getPlayers();
+        while ($hasMorePages) {
+            $response = Sportsmonk::getPlayers($page);
 
-        foreach ($players['data'] as $player) {
-            $this->info('Importing player ' . $player['firstname']);
+            if (!empty($response['data'])) {
+                foreach ($response['data'] as $player) {
+                    $playersCount++;
+                    $this->info('Importing player ' . $player['firstname']);
+                    Sportsmonk::updateOrCreatePlayer($player);
+                }
+            }
+
+            $hasMorePages = $response['pagination']['has_more'];
+            $page++;
         }
 
-        $this->info('Imported ' . count($players['data']) . ' players.');
+
+        $this->info('Imported ' . $playersCount . ' players.');
     }
 }
