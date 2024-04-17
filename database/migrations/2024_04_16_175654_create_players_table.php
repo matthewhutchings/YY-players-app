@@ -15,26 +15,26 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->timestamp('last_synced_at')->nullable();
-            $table->unsignedBigInteger('sportsmonk_id');
-            $table->unsignedBigInteger('sport_id');
-            $table->unsignedBigInteger('country_id');
-            $table->unsignedBigInteger('nationality_id');
-            $table->string('nationality_name');
+            $table->unsignedBigInteger('sportsmonk_id')->index();
+            $table->unsignedBigInteger('sport_id')->nullable();
+            $table->unsignedBigInteger('country_id')->nullable();
+            $table->unsignedBigInteger('nationality_id')->nullable();
+            $table->string('nationality_name')->nullable()->index();
             $table->unsignedBigInteger('city_id')->nullable();
             $table->unsignedBigInteger('position_id')->nullable();
             $table->string('position_name')->nullable();
             $table->unsignedBigInteger('detailed_position_id')->nullable();
             $table->unsignedBigInteger('type_id')->nullable();
-            $table->string('common_name');
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('name');
-            $table->string('display_name');
-            $table->string('image_path');
+            $table->string('common_name')->nullable();
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
+            $table->string('name')->nullable();
+            $table->string('display_name')->nullable()->index();
+            $table->string('image_path')->nullable();
             $table->unsignedTinyInteger('height')->nullable();
             $table->unsignedTinyInteger('weight')->nullable();
             $table->date('date_of_birth')->nullable();
-            $table->enum('gender', ['male', 'female']);
+            $table->string('gender', 6)->nullable();
         });
     }
 
