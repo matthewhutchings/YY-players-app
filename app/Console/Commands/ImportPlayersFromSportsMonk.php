@@ -46,7 +46,6 @@ class ImportPlayersFromSportsMonk extends Command
             $page++;
         }
 
-
         $this->info('Imported ' . $playersCount . ' players.');
     }
 }

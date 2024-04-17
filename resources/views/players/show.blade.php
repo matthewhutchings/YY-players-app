@@ -41,7 +41,7 @@
                                                                   {{ $player->position_name }}
                                                             </h3>
                                                             <p class="text-base leading-7 text-gray-600">
-                                                                  Age: {{ $player->nationality_name }}
+                                                                  Age: {{ $player->age }}
                                                             </p>
                                                             <p class="text-base leading-7 text-gray-600">
                                                                   Gender: {{ $player->gender }}
