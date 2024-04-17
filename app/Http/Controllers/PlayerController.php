@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class PlayerController extends Controller
 {
-
     /**
      * Display a listing of all players.
      *
@@ -46,6 +45,12 @@ class PlayerController extends Controller
         return view('players.show', compact('player'));
     }
 
+    /**
+     * Display the unique nationalities.
+     *
+     * @param  int  $id
+     * @return Player
+     */
     public function getNationalities()
     {
         return Player::select('nationality_name', 'nationality_id')
