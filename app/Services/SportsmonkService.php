@@ -31,7 +31,7 @@ class SportsmonkService
             return null;
       }
 
-      public function updateOrCreatePlayer($playerData)
+      public function importSportsmonkPlayer($playerData)
       {
             $player = Player::updateOrCreate(
                   [

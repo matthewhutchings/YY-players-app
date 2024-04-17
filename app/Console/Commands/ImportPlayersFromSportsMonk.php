@@ -38,7 +38,7 @@ class ImportPlayersFromSportsMonk extends Command
                 foreach ($response['data'] as $player) {
                     $playersCount++;
                     $this->info('Importing player ' . $player['firstname']);
-                    Sportsmonk::updateOrCreatePlayer($player);
+                    Sportsmonk::importSportsmonkPlayer($player);
                 }
             }
 
