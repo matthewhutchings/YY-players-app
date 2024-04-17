@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="bg-white py-24 sm:py-32">
+    <div class="bg-white ">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="mx-auto max-w-2xl lg:mx-0">
             </div>
@@ -21,7 +21,7 @@
                             Players Search</h2>
                     </div>
 
-                    <div class=" mt-10">
+                    <div class=" ">
                         <form action="{{ url('/') }}" method="GET" class="grid grid-cols-6 gap-4">
                             <input type="text" name="name" placeholder="Search by name" class="col-span-2 p-2 border rounded" value="{{ request('name') }}">
                             <select name="nationality" class="col-span-2 p-2 border rounded">
@@ -50,14 +50,23 @@
                                     <thead class="bg-gray-50">
                                         <tr>
                                             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                                                Picture</th>
+                                            <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
                                                 Name</th>
                                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
                                                 Nationality</th>
+                                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                                Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-gray-200 bg-white">
                                         @foreach ($players as $player)
                                         <tr>
+                                            <td class="whitespace">
+                                                <span class="relative inline-block">
+                                                    <img class=" m-3 h-16 w-16 rounded-full" src="{{ $player->image_path }}" alt="">
+                                                </span>
+                                            </td>
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                                                 <a href="/player/{{$player->id}}">
                                                     {{ $player->name }} </a>
@@ -66,7 +75,13 @@
                                                 {{ $player->nationality_name }}
                                             </td>
 
+                                            <td class=" whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                <a href="/player/{{$player->id}}" class="rounded bg-indigo-600 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">View</a>
+
+                                            </td>
+
                                         </tr>
+                                        </a>
                                         @endforeach
                                     </tbody>
                                 </table>

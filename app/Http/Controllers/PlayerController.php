@@ -31,7 +31,19 @@ class PlayerController extends Controller
 
         $players = $query->paginate($perPage);
 
-        return view('index', compact('players', 'nationalities'));
+        return view('players.index', compact('players', 'nationalities'));
+    }
+    /**
+     * Display the specified player.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $player = Player::findOrFail($id);
+
+        return view('players.show', compact('player'));
     }
 
     public function getNationalities()
