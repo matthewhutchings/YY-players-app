@@ -25,6 +25,8 @@ class SportsmonkServiceTest extends TestCase
 
         $response = $service->getPlayers();
 
+        $this->assertIsArray($response);
+        $this->assertArrayHasKey('pagination', $response);
         $this->assertEquals(1, $response['pagination']['current_page']);
     }
 }
