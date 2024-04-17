@@ -1,5 +1,8 @@
 # Football Player Directory
 
+
+![Demo GIF](public/demo.gif)
+
 This application provides a platform to view and manage football player data imported from the Sportmonks API. It allows visitors to browse, search, and view detailed information about football players stored in a local database.
 
 ## Features
